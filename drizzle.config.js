@@ -3,6 +3,6 @@ export default {
     schema: "./utils/schema.jsx",
     dialect: 'postgresql',
     dbCredentials: {
-        connectionString: process.env.NEXT_PUBLIC_DATABASE_URL,
+        url : 'postgresql://expense-tracker_owner:68ucDoJHhgAf@ep-icy-grass-a5id60v9.us-east-2.aws.neon.tech/expense-tracker?sslmode=require',
     }
 };

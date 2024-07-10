@@ -26,6 +26,13 @@ function Hero() {
                             >
                                 Get Started
                             </a>
+
+                            <a
+                                className="block w-full rounded border border-red-600 bg-primary px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto"
+                                href='/dashboard'
+                            >
+                                Dashboard
+                            </a>
                         </div>
                     </div>
                 </div>

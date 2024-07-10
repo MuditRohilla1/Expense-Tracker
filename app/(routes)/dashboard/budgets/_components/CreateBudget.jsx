@@ -18,7 +18,7 @@ import { toast } from 'sonner';
 import { db } from '@/utils/dbConfig';
 import { DialogClose } from '@radix-ui/react-dialog';
 
-function CreateBudget() {
+function CreateBudget({refreshData}) {
     const [emojiIcon, setEmojiIcon] = useState('🤑');
     const [openEmojiPicker, setOpenEmojiPicker] = useState(false);
     const [budgetName, setBudgetName] = useState('');
@@ -37,6 +37,7 @@ function CreateBudget() {
                 .returning({ insertedId: Budgets.id });
 
             if (result) {
+                refreshData()
                 toast('NEW BUDGET CREATED!');
             }
         } catch (error) {
@@ -62,7 +63,7 @@ function CreateBudget() {
                                     {emojiIcon}
                                 </Button>
                                 {openEmojiPicker && (
-                                    <div className='absolute'>
+                                    <div className='absolute z-3'>
                                         <EmojiPicker
                                             onEmojiClick={(e) => {
                                                 setEmojiIcon(e.emoji);

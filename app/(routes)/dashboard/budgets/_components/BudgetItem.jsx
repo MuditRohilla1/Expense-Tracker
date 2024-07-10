@@ -3,7 +3,7 @@ import React from 'react';
 function BudgetItem({ budget }) {
     return (
 
-        <div className='p-4 border rounded-lg gap-5 bg-orange-100 hover:shadow-md cursor-pointer'>
+        <div className='p-4 border rounded-lg gap-5 bg-orange-50 hover:shadow-md cursor-pointer'>
             <div className='flex gap-2 items-center justify-between'>
                 <div className='flex gap-2 items-center'>
                     <h2 className='text-xl p-3 bg-slate-100 shadow-lg rounded-full'>{budget?.icon}</h2>
@@ -23,7 +23,7 @@ function BudgetItem({ budget }) {
 
                 </div>
 
-                <div className='w-full bg-slate-400 h-2 rounded-full'>
+                <div className='w-full bg-orange-200 h-2 rounded-full'>
                     <div className='w-[40%] bg-primary h-2 rounded-full'>
 
                     </div>

@@ -7,16 +7,34 @@ import { desc, eq, getTableColumns } from 'drizzle-orm';
 import { sql } from 'drizzle-orm';
 import { Budgets, Expenses } from '@/utils/schema';
 import BarchartDashboard from './_components/BarchartDashboard';
+import BudgetItem from './budgets/_components/BudgetItem';
+import ExpenseListTable from './expenses/_components/ExpenseListTable';
 
 function Page() {
     const { user } = useUser();
     const [budgetList, setBudgetList] = useState([]);
+    const [expensesList, setExpensesList] = useState([]);
 
     useEffect(() => {
         if (user) {
             getBudgetList();
         }
     }, [user]);
+
+    const getAllExpenses =async()=>{
+        const result = await db.select({
+            id:Expenses.id,
+            name:Expenses.name,
+            amount:Expenses.amount,
+            createdAt:Expenses.createdAt
+        })
+        .from(Budgets)
+        .rightJoin(Expenses,eq(Budgets.id, Expenses.budgetId))
+        .where(eq(Budgets.createdBy, user?.primaryEmailAddress.emailAddress))
+        .orderBy(desc(Expenses.id))
+        ;
+        setExpensesList(result);        
+    }
 
     const getBudgetList = async () => {
         try {
@@ -33,6 +51,7 @@ function Page() {
 
             console.log("Budget List Result:", result);
             setBudgetList(result);
+            getAllExpenses();
         } catch (error) {
             console.error("Error fetching budget list:", error);
         }
@@ -44,14 +63,22 @@ function Page() {
             <p className='text-gray-600'>Here's what's happening with your money, let's manage your expenses!</p>
 
             <CardsInfo budgetList={budgetList} />
-            <div className='grid grid-cols-1 md:grid-cols-3 mt-6'>
+            <div className='grid grid-cols-1 md:grid-cols-3 mt-6 gap-5'>
                 <div className='md:col-span-2'>
-                    <BarchartDashboard
-                        budgetList={budgetList}
+                    <BarchartDashboard budgetList={budgetList} />
+
+                    <ExpenseListTable
+                        expenseList={expensesList}
+                        refreshData={()=>{
+                            getBudgetList()
+                        }}
                     />
                 </div>
-                <div>
-                    Other Content
+                <div className='grid gap-5'>
+                <h2 className='font-bold text-lg'>Latest Budget</h2>
+                    {budgetList.map((budget, index) => (
+                        <BudgetItem budget={budget} key={index} />
+                    ))}
                 </div>
             </div>
         </div>

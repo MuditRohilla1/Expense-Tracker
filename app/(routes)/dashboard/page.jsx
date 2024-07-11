@@ -6,6 +6,7 @@ import { db } from '@/utils/dbConfig';
 import { desc, eq, getTableColumns } from 'drizzle-orm';
 import { sql } from 'drizzle-orm';
 import { Budgets, Expenses } from '@/utils/schema';
+import BarchartDashboard from './_components/BarchartDashboard';
 
 function Page() {
     const { user } = useUser();
@@ -43,6 +44,16 @@ function Page() {
             <p className='text-gray-600'>Here's what's happening with your money, let's manage your expenses!</p>
 
             <CardsInfo budgetList={budgetList} />
+            <div className='grid grid-cols-1 md:grid-cols-3 mt-6'>
+                <div className='md:col-span-2'>
+                    <BarchartDashboard
+                        budgetList={budgetList}
+                    />
+                </div>
+                <div>
+                    Other Content
+                </div>
+            </div>
         </div>
     );
 }

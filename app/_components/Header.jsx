@@ -11,7 +11,7 @@ function Header() {
   return (
     <div className='p-3 flex justify-between shadow-lg align-middle border rounded-sm'>
         <Image
-            src={'./logo.svg'}
+            src={'./LOGO.svg'}
             alt={'logo'}
             width={160}
             height={100}

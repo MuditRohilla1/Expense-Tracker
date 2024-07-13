@@ -51,6 +51,11 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        backdropBlur: {
+          sm: '4px',
+          DEFAULT: '8px',
+          lg: '16px',
+          },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -66,10 +71,15 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        spin: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        spinSlow: 'spin 5s linear infinite',
       },
     },
   },

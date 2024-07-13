@@ -1,44 +1,23 @@
 import { UserButton } from '@clerk/nextjs'
+import Link from 'next/link'
 import React from 'react'
+import { Button } from '@/components/ui/button'
 
 function DashboardHeader() {
     return (
-        <div className='p-5 shadow-sm border-bottom flex justify-between'>
-            <div>
-                <div className="relative">
-                    <label htmlFor="Search" className="sr-only"> Search </label>
+        <div className='p-5 border border-black flex justify-between items-center shadow-xl rounded-lg w-full'>
+            <h1 className='hidden lg:block w-full h-10 font-bold text-3xl bg-gradient-to-l from-orange-400 to-amber-900 bg-clip-text text-transparent'>Your Own Expense Tracker</h1>
+            <div className='flex justify-between gap-3 lg:hidden md:hidden'>
+                <Link href='/dashboard'>
+                    <Button className='lg:text-3xl md:text-2xl  font-bold font-serif shadow-md hover:bg-slate-700 hover:shadow-lg'>Dashboard</Button>
+                </Link>
 
-                    <input
-                        type="text"
-                        id="Search"
-                        placeholder="Search for..."
-                        className="w-full rounded-md border-gray-200 py-2.5 pe-10 shadow-sm sm:text-sm bg-slate-600"
-                    />
-
-                    <span className="absolute inset-y-0 end-0 grid w-10 place-content-center">
-                        <button type="button" className="text-gray-600 hover:text-gray-700">
-                            <span className="sr-only">Search</span>
-
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth="1.5"
-                                stroke="currentColor"
-                                className="h-4 w-4"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-                                />
-                            </svg>
-                        </button>
-                    </span>
-                </div>
+                <Link href='/dashboard/budgets'>
+                    <Button className='lg:text-3xl md:text-2xl  font-bold font-serif shadow-md hover:bg-slate-700 hover:shadow-lg'>Budgets</Button>
+                </Link>
             </div>
 
-            <div>
+            <div className='flex justify-end w-full'>
                 <UserButton />
             </div>
         </div>

@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react'
 import Image from 'next/image'
 import { LayoutGrid, PiggyBank, ReceiptText, ShieldCheck } from 'lucide-react'
-import { UserButton } from '@clerk/nextjs'
+import { UserButton, useUser } from '@clerk/nextjs'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 
@@ -20,18 +20,18 @@ function SideNav() {
             icon:PiggyBank,
             path:'/dashboard/budgets'
         },
-        {
-            id:3,
-            name:'Expenses',
-            icon:ReceiptText,
-            path:'/dashboard/expenses'
-        },
-        {
-            id:4,
-            name:'Upgrade',
-            icon:ShieldCheck,
-            path:'/dashboard/upgrades'
-        },
+        // {
+        //     id:3,
+        //     name:'Expenses',
+        //     icon:ReceiptText,
+        //     path:'/dashboard/expenses'
+        // },
+        // {
+        //     id:4,
+        //     name:'Upgrades',
+        //     icon:ShieldCheck,
+        //     path:'/dashboard/upgrades'            
+        // },
     ]
 
     const path = usePathname();
@@ -40,8 +40,10 @@ function SideNav() {
         console.log(path)
     }, [path])
 
+    const { user } = useUser();
+
     return (
-        <div className='h-screen p-5 border shadow-sm rounded-lg'>
+        <div className='h-screen p-5 border border-black rounded-lg shadow-lg'>
             <Image
                 src={'/logo.svg'}
                 alt={'logo'}
@@ -62,7 +64,7 @@ function SideNav() {
 
             <div className='fixed bottom-10 flex p-5 gap-2 items-center'>
                 <UserButton/>
-                Profile
+                {user?.fullName}
             </div>
         </div>
     )

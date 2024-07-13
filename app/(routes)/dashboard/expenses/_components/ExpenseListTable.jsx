@@ -43,8 +43,8 @@ function ExpenseListTable({ expenseList , refreshData}) {
 
     return (
         <div className="mt-3">
-        <h2 className='font-bold text-lg mb-2'>Latest Expenses</h2>
-            <div className="grid grid-cols-4 bg-slate-300 p-2 font-semibold">
+        <h2 className='font-bold text-3xl mb-2'>Latest Expenses</h2>
+            <div className="grid grid-cols-4 bg-slate-300 p-2 font-semibold rounded-t-xl">
                 <h2 className='font-bold'>Name</h2>
                 <h2 className='font-bold'>Amount</h2>
                 <h2 className='font-bold'>Date</h2>

@@ -3,8 +3,8 @@ import { BarChart, Bar, Legend, Tooltip, XAxis, YAxis, ResponsiveContainer } fro
 
 function BarchartDashboard({ budgetList }) {
     return (
-        <div className='border rounded-lg p-5' style={{ width: '100%', height: 400 }}>
-            <ResponsiveContainer width="80%" height="100%">
+        <div className='border rounded-lg p-5 bg-white mb-8' style={{ width: '100%', height: 400 }}>
+            <ResponsiveContainer className='sm:w-[100%] md:w-[80%] lg:w-[80%]' height="100%">
             <h2 className='font-bold text-lg'>Activity</h2>
                 <BarChart
                     data={budgetList}

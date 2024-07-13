@@ -58,7 +58,7 @@ function Page() {
     };
 
     return (
-        <div className='p-5'>
+        <div className='p-5 bg-gradient-to-b from-orange-400 to-amber-900 rounded-xl'>
             <h2 className='font-bold text-3xl font-serif'>Hi, {user?.fullName}</h2>
             <p className='text-gray-600'>Here's what's happening with your money, let's manage your expenses!</p>
 
@@ -75,7 +75,7 @@ function Page() {
                     />
                 </div>
                 <div className='grid gap-5'>
-                <h2 className='font-bold text-lg'>Latest Budget</h2>
+                <h2 className='font-bold text-3xl'>Latest Budget</h2>
                     {budgetList.map((budget, index) => (
                         <BudgetItem budget={budget} key={index} />
                     ))}
